@@ -4,7 +4,7 @@
 ## Isspam
 
 ```
-POST /api/isspam
+GET /api/isspam
 Content-Type: application/json
 body:
 {
@@ -20,4 +20,12 @@ body:
 {
   “spamPropability”: double od 0 do 1  
 }
+```
+
+Example
+```
+curl --header "Content-Type: application/json" \
+  --request GET \
+  --data '{"content":"to jest spam"}' \
+  http://localhost:8000/isspam/
 ```
