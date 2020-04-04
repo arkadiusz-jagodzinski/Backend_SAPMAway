@@ -1,31 +1,54 @@
+# Backend SPAMAway
 
-# Endpoints 
+## Table of contents
+1. [Project Status](#project-status)
+1. [Getting Started](#Getting-Started)
+    1. [Requirements](#Requirements)
+    1. [Installation](#installation)
+    1. [Usage](#usage)
 
-## Isspam
+# Project Status
 
-```
-GET /api/isspam
-Content-Type: application/json
-body:
-{
-  “content”: “abcd aaa aaasd”
-}
+Mocked isspam endpoint.
 
-Responses
-Content-Type: application/json
-Code:
-  * 200: successful operation
-  * 400: invalid input
-body:
-{
-  “spamPropability”: double od 0 do 1  
-}
-```
+# Getting Started
 
-Example
-```
-curl --header "Content-Type: application/json" \
-  --request GET \
-  --data '{"content":"to jest spam"}' \
-  http://localhost:8000/isspam/
-```
+## Requirements
+
+  * Docker
+  * Docker compose
+
+## Installation
+
+  `docker-compose up`
+
+## Usage
+
+  You can check sms message for spam by using `/isspam/` endpoint:
+
+  ```
+  GET /isspam/
+  Content-Type: application/json
+  body:
+  {
+    “content”: “abcd aaa aaasd”
+  }
+
+  Response
+  Content-Type: application/json
+  Code:
+    * 200: successful operation
+    * 400: invalid input
+  body:
+  {
+    “spamPropability”: double  [0.0, 1.0]
+  }
+  ```
+
+  **Example**
+  ```
+  curl --header "Content-Type: application/json" \
+    --request GET \
+    --data '{"content":"to jest spam"}' \
+    http://localhost:8000/isspam/
+  ```
