@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import json
-import random
 from django.http import JsonResponse
+from .spamcheck import isSpam
 
 # Create your views here.
 
@@ -32,7 +32,3 @@ def index(requests):
 		return HttpResponse("Message too short", status=400)
 
 	return JsonResponse({'spamPropability': isSpam(content)})
-
-
-def isSpam(text) :
-	return round(random.random(), 2)
