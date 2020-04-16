@@ -27,7 +27,7 @@ Mocked isspam endpoint.
   You can check sms message for spam by using `/isspam/` endpoint:
 
   ```
-  GET /isspam/
+  POST /isspam/
   Content-Type: application/json
   body:
   {
@@ -48,7 +48,7 @@ Mocked isspam endpoint.
   **Example**
   ```
   curl --header "Content-Type: application/json" \
-    --request GET \
+    --request POST \
     --data '{"content":"to jest spam"}' \
     http://localhost:8000/isspam/
   ```
