@@ -6,10 +6,14 @@ from .spamcheck import isSpam
 # Create your views here.
 
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
+# Disable CSRF protection
+# https://docs.djangoproject.com/en/3.0/ref/csrf/
+@csrf_exempt
 def index(requests):
 
-	if(requests.method != 'GET'):
+	if(requests.method != 'POST'):
 		return HttpResponse("Bad method", status=400)
 
 	if(requests.content_type != 'application/json'):
