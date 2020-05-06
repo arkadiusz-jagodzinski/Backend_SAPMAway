@@ -7,6 +7,7 @@ from .spamcheck import isSpam
 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from .models import Sms
 
 # Disable CSRF protection
 # https://docs.djangoproject.com/en/3.0/ref/csrf/
@@ -35,4 +36,9 @@ def index(requests):
 	if(len(content) == 0):
 		return HttpResponse("Message too short", status=400)
 
-	return JsonResponse({'spamPropability': isSpam(content)})
+	isspam = isSpam(content)
+	sms = Sms(spamProbability = isspam, content = content)
+	sms.save()
+	
+	return JsonResponse({'spamPropability': isspam})
+
