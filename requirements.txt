@@ -2,6 +2,8 @@ asgiref==3.2.7
 Django==3.0.5
 joblib==0.14.1
 numpy==1.18.2
+psycopg2==2.8.5
+PyMySQL==0.9.3
 pytz==2019.3
 scikit-learn==0.22.2.post1
 scipy==1.4.1
