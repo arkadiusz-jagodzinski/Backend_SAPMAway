@@ -52,3 +52,11 @@ Mocked isspam endpoint.
     --data '{"content":"to jest spam"}' \
     http://localhost:8000/isspam/
   ```
+
+  You get all of the smses by using `/isspam/lastsms` endpoint:
+
+  **Example**
+  ```
+  curl http://localhost:8000/isspam/lastsms/
+
+  ```
