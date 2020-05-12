@@ -1,3 +1,5 @@
+matplotlib
+wordcloud
 asgiref==3.2.7
 Django==3.0.5
 joblib==0.14.1
