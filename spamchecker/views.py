@@ -38,8 +38,6 @@ def index(requests):
 		return HttpResponse("Message too short", status=400)
 
 	isspam = isSpam(content)
-	sms = Sms(spamProbability = isspam, content = content)
-	sms.save()
 	
 	return JsonResponse({'spamPropability': isspam})
 
@@ -51,3 +49,17 @@ def lastsms(requests):
 		return HttpResponse("Bad method", status=400)
 
 	return JsonResponse(serializers.serialize('json', Sms.objects.all()), safe=False)
+
+# Disable CSRF protection
+# https://docs.djangoproject.com/en/3.0/ref/csrf/
+@csrf_exempt
+def feedback(requests):
+	if(requests.method != 'POST'):
+		return HttpResponse("Bad method", status=400)
+	
+	data = json.loads(requests.body)
+	sms = Sms(isSpam = data['isSpam'], content = data['content'])
+	sms.save()
+
+	return HttpResponse("Ok", status=200)
+
