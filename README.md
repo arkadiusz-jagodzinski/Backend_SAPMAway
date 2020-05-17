@@ -24,6 +24,7 @@ Mocked isspam endpoint.
 
 ## Usage
 
+### Check if an sms is spam
   You can check sms message for spam by using `/isspam/` endpoint:
 
   ```
@@ -52,7 +53,27 @@ Mocked isspam endpoint.
     --data '{"content":"to jest spam"}' \
     http://localhost:8000/isspam/
   ```
+  
+  ### Feedback
+  You can send feedback by using below endpoint
 
+  **Example**
+  ```
+  curl --header "Content-Type: application/json" \
+    --request POST \
+    --data '{"content":"to jest spam", "isSpam":true}' \
+    http://localhost:8000/isspam/feedback
+  ```
+
+  **Example**
+  ```
+  curl --header "Content-Type: application/json" \
+    --request POST \
+    --data '{"content":"to nie jest spam", "isSpam":false}' \
+    http://localhost:8000/isspam/feedback
+  ```
+
+  ### Get feedback smses
   You get all of the smses by using `/isspam/lastsms` endpoint:
 
   **Example**
